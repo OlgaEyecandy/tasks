@@ -13,13 +13,12 @@ var outputStr = f(inputStr);
 console.log(outputStr) 
 
 //с рекурсией
- function fRecursive(str) {
-    if (str.length - 1) {
-      var result = fRecursive(str.slice(1)) + str[0];
+function fRecursive(str) {
+    if (str.length >= 2) {
+      return fRecursive(str.slice(1)) + str[0];
     } 
-    else var result = str;
-    return result;
+    return str;
   };
-  var inputStr = 'olleh';
-  var outputStr = fRecursive(inputStr);
-  console.log(outputStr)
+var inputStr = 'olleh';
+var outputStr = fRecursive(inputStr);
+console.log(outputStr)
