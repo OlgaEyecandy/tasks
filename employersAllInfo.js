@@ -67,25 +67,25 @@ var employers = [{
 ];
 
 function allInfo(arr) {
-    var allInfoObj = {};
-    var sumForAllEmp = 0;
-    var hoursForAllEmp = 0;
-    var hoursArr = [];
-    var names = [];
-    var lessThanNeed = [];
-    var moreThanNeed = [];
+    let allInfoObj = {};
+    let sumForAllEmp = 0;
+    let hoursForAllEmp = 0;
+    let hoursArr = [];
+    let names = [];
+    let lessThanNeed = [];
+    let moreThanNeed = [];
 
-    var salaryArr = arr.map(function (item) {
-        var hours = item.hours;
-        var hoursPerWeek = 0;
+    let salaryArr = arr.map(function (item) {
+        let hours = item.hours;
+        let hoursPerWeek = 0;
         if (item.hours !== undefined) {
             hoursPerWeek = calcHoursPerWeek(hours);
         }
-        var oneHourPrice = 0;
+        let oneHourPrice = 0;
         if (item.oneHourPrice !== undefined) {
             oneHourPrice = item.oneHourPrice;
         }
-        var salary = calcSalary(hoursPerWeek, oneHourPrice);
+        let salary = calcSalary(hoursPerWeek, oneHourPrice);
 
         return {
             name: getName(item),
@@ -94,24 +94,24 @@ function allInfo(arr) {
         };
     });
 
-    salaryArr.forEach(function (item) {
+    salaryArr.forEach( function (item) {
         sumForAllEmp += item.salary;
         hoursForAllEmp += item.hoursPerWeek;
         hoursArr.push(item.hoursPerWeek);
         names.push(item.name);
     });
-    var lessThanNeed = salaryArr.filter(function (salaryItem) {
+    lessThanNeed = salaryArr.filter(function (salaryItem) {
         return salaryItem.hoursPerWeek < 40;
     }).map(getName);
 
-    var moreThanNeed = salaryArr.filter(function (salaryItem) {
+    moreThanNeed = salaryArr.filter(function (salaryItem) {
         return salaryItem.hoursPerWeek > 40;
     }).map(getName);
-    var isNormed = false
+    let isNormed = false
     if (hoursArr.length > 0) {
         isNormed = hoursArr.every(isNorm);
     }
-    var isOverWorked = hoursArr.some(isOverWork);
+    let isOverWorked = hoursArr.some(isOverWork);
     allInfoObj.salaryArr = salaryArr;
     allInfoObj.sumForAllEmp = sumForAllEmp;
     allInfoObj.hoursForAllEmp = hoursForAllEmp;
@@ -123,28 +123,21 @@ function allInfo(arr) {
     return allInfoObj;
 }
 
-function getName(salaryItem) {
-    return salaryItem.name || "Name is not set";
-}
+let getName = salaryItem => salaryItem.name || "Name is not set";
 
-function calcHoursPerWeek(arr) {
-    var result = arr.reduce(function (sum, current) {
+
+let calcHoursPerWeek = arr => {
+    let result = arr.reduce(function (sum, current) {
         return sum + current;
     }, 0);
     return result
 }
 
-function calcSalary(num, n) {
-    return num * n;
-}
+let calcSalary = (num, n) => num * n;
 
-function isNorm(hour) {
-    return +hour === 40;
-}
+let isNorm = hour => +hour === 40;
 
-function isOverWork(hour) {
-    return +hour > 40;
-}
+let isOverWork = hour => +hour > 40;
 
 
 describe("Функция для администрирования персонала", function () {
