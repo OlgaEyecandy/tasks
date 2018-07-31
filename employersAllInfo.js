@@ -19,7 +19,6 @@
   oneHourPrice: 150,
   hours: [8, 8, 8, 9, 7]
 }, ]
-
 Возвращает объект: {
   sumForAllEmp: number // Сумма, которая должна быть выплачена всем работникам
   salary: [ // для каждого сотрудника
@@ -49,7 +48,7 @@
   ],
   names: string // строка с именами всех работников "вася петя маша"
 } */
-var employers = [{
+let employers = [{
         name: "Вася",
         oneHourPrice: 100,
         hours: [8, 8, 11, 9, 6]
@@ -75,7 +74,7 @@ function allInfo(arr) {
     let lessThanNeed = [];
     let moreThanNeed = [];
 
-    let salaryArr = arr.map(function (item) {
+    let salaryArr = arr.map(item => {
         let hours = item.hours;
         let hoursPerWeek = 0;
         if (item.hours !== undefined) {
@@ -94,20 +93,15 @@ function allInfo(arr) {
         };
     });
 
-    salaryArr.forEach( function (item) {
+    salaryArr.forEach(item => {
         sumForAllEmp += item.salary;
         hoursForAllEmp += item.hoursPerWeek;
         hoursArr.push(item.hoursPerWeek);
         names.push(item.name);
     });
-    lessThanNeed = salaryArr.filter(function (salaryItem) {
-        return salaryItem.hoursPerWeek < 40;
-    }).map(getName);
-
-    moreThanNeed = salaryArr.filter(function (salaryItem) {
-        return salaryItem.hoursPerWeek > 40;
-    }).map(getName);
-    let isNormed = false
+    lessThanNeed = salaryArr.filter( salaryItem => salaryItem.hoursPerWeek < 40).map(getName);
+    moreThanNeed = salaryArr.filter( salaryItem => salaryItem.hoursPerWeek > 40).map(getName);
+    let isNormed = false;
     if (hoursArr.length > 0) {
         isNormed = hoursArr.every(isNorm);
     }
@@ -143,174 +137,173 @@ let isOverWork = hour => +hour > 40;
 describe("Функция для администрирования персонала", function () {
     it("Если данные не пришли, то функция выдает пустые расчетные значения, логические равны false", function () {
         assert.deepEqual(
-            allInfo([
-            ]), {
-            salaryArr: [],
-            sumForAllEmp: 0,
-            hoursForAllEmp: 0,
-            isNormed: false,
-            isOverWorked: false,
-            lessThanNeed: [],
-            moreThanNeed: [],
-            names: []
-        })
+            allInfo([]), {
+                salaryArr: [],
+                sumForAllEmp: 0,
+                hoursForAllEmp: 0,
+                isNormed: false,
+                isOverWorked: false,
+                lessThanNeed: [],
+                moreThanNeed: [],
+                names: []
+            })
     })
 
     it("Если не заполнены параметры name, то функция выдаcт массивы с именами Name is not set и расчеты произведет корректно", function () {
         assert.deepEqual(
             allInfo(
-            [{
-                    oneHourPrice: 100,
-                    hours: [8, 8, 11, 9, 6]
-                },
-                {
-                    oneHourPrice: 50,
-                    hours: [5, 5, 5, 5, 5]
-                },
-                {
-                    oneHourPrice: 150,
-                    hours: [8, 8, 8, 9, 7]
-                }
-            ]), {
-            salaryArr: [{
-                name: "Name is not set",
-                hoursPerWeek: 42,
-                salary: 4200
-            }, {
-                name: "Name is not set",
-                hoursPerWeek: 25,
-                salary: 1250
-            }, {
-                name: "Name is not set",
-                hoursPerWeek: 40,
-                salary: 6000
-            }],
-            sumForAllEmp: 11450,
-            hoursForAllEmp: 107,
-            isNormed: false,
-            isOverWorked: true,
-            lessThanNeed: ["Name is not set", ],
-            moreThanNeed: ["Name is not set", ],
-            names: ["Name is not set", "Name is not set", "Name is not set", ]
-        })
+                [{
+                        oneHourPrice: 100,
+                        hours: [8, 8, 11, 9, 6]
+                    },
+                    {
+                        oneHourPrice: 50,
+                        hours: [5, 5, 5, 5, 5]
+                    },
+                    {
+                        oneHourPrice: 150,
+                        hours: [8, 8, 8, 9, 7]
+                    }
+                ]), {
+                salaryArr: [{
+                    name: "Name is not set",
+                    hoursPerWeek: 42,
+                    salary: 4200
+                }, {
+                    name: "Name is not set",
+                    hoursPerWeek: 25,
+                    salary: 1250
+                }, {
+                    name: "Name is not set",
+                    hoursPerWeek: 40,
+                    salary: 6000
+                }],
+                sumForAllEmp: 11450,
+                hoursForAllEmp: 107,
+                isNormed: false,
+                isOverWorked: true,
+                lessThanNeed: ["Name is not set", ],
+                moreThanNeed: ["Name is not set", ],
+                names: ["Name is not set", "Name is not set", "Name is not set", ]
+            })
     })
 
     it("Если не заполнены параметры oneHourPrice, то функция при расчете salary и sumForAllEmp выдаст 0", function () {
         assert.deepEqual(
             allInfo(
-            [{
+                [{
+                        name: "Вася",
+                        hours: [8, 8, 11, 9, 6]
+                    },
+                    {
+                        name: "Петя",
+                        hours: [5, 5, 5, 5, 5]
+                    },
+                    {
+                        name: "Маша",
+                        hours: [8, 8, 8, 9, 7]
+                    }
+                ]), {
+                salaryArr: [{
                     name: "Вася",
-                    hours: [8, 8, 11, 9, 6]
-                },
-                {
+                    hoursPerWeek: 42,
+                    salary: 0
+                }, {
                     name: "Петя",
-                    hours: [5, 5, 5, 5, 5]
-                },
-                {
+                    hoursPerWeek: 25,
+                    salary: 0
+                }, {
                     name: "Маша",
-                    hours: [8, 8, 8, 9, 7]
-                }
-            ]), {
-            salaryArr: [{
-                name: "Вася",
-                hoursPerWeek: 42,
-                salary: 0
-            }, {
-                name: "Петя",
-                hoursPerWeek: 25,
-                salary: 0
-            }, {
-                name: "Маша",
-                hoursPerWeek: 40,
-                salary: 0
-            }],
-            sumForAllEmp: 0,
-            hoursForAllEmp: 107,
-            isNormed: false,
-            isOverWorked: true,
-            lessThanNeed: ["Петя"],
-            moreThanNeed: ["Вася"],
-            names: ["Вася", "Петя", "Маша"]
-        })
+                    hoursPerWeek: 40,
+                    salary: 0
+                }],
+                sumForAllEmp: 0,
+                hoursForAllEmp: 107,
+                isNormed: false,
+                isOverWorked: true,
+                lessThanNeed: ["Петя"],
+                moreThanNeed: ["Вася"],
+                names: ["Вася", "Петя", "Маша"]
+            })
     })
 
     it("Если не заполнен массив hours, то функция при расчете salary, вернет 0", function () {
         assert.deepEqual(
             allInfo(
-            [{
+                [{
+                        name: "Вася",
+                        oneHourPrice: 100,
+                    },
+                    {
+                        name: "Петя",
+                        oneHourPrice: 50,
+                    },
+                    {
+                        name: "Маша",
+                        oneHourPrice: 150,
+                    }
+                ]), {
+                salaryArr: [{
                     name: "Вася",
-                    oneHourPrice: 100,
-                },
-                {
+                    hoursPerWeek: 0,
+                    salary: 0
+                }, {
                     name: "Петя",
-                    oneHourPrice: 50,
-                },
-                {
+                    hoursPerWeek: 0,
+                    salary: 0
+                }, {
                     name: "Маша",
-                    oneHourPrice: 150,
-                }
-            ]), {
-            salaryArr: [{
-                name: "Вася",
-                hoursPerWeek: 0,
-                salary: 0
-            }, {
-                name: "Петя",
-                hoursPerWeek: 0,
-                salary: 0
-            }, {
-                name: "Маша",
-                hoursPerWeek: 0,
-                salary: 0
-            }],
-            sumForAllEmp: 0,
-            hoursForAllEmp: 0,
-            isNormed: false,
-            isOverWorked: false,
-            lessThanNeed: ["Вася", "Петя", "Маша"],
-            moreThanNeed: [],
-            names: ["Вася", "Петя", "Маша"]
-        })
+                    hoursPerWeek: 0,
+                    salary: 0
+                }],
+                sumForAllEmp: 0,
+                hoursForAllEmp: 0,
+                isNormed: false,
+                isOverWorked: false,
+                lessThanNeed: ["Вася", "Петя", "Маша"],
+                moreThanNeed: [],
+                names: ["Вася", "Петя", "Маша"]
+            })
     })
 
     it("Если не заполнен массив hours у одного работника, то функция при расчете его salary, вернет 0, остальные расчеты произойдут учитывая это значение", function () {
         assert.deepEqual(
             allInfo(
-            [{
+                [{
+                        name: "Вася",
+                        oneHourPrice: 100,
+                    },
+                    {
+                        name: "Петя",
+                        oneHourPrice: 50,
+                        hours: [5, 5, 5, 5, 5]
+                    },
+                    {
+                        name: "Маша",
+                        oneHourPrice: 150,
+                        hours: [8, 8, 8, 9, 7]
+                    }
+                ]), {
+                salaryArr: [{
                     name: "Вася",
-                    oneHourPrice: 100,
-                },
-                {
+                    hoursPerWeek: 0,
+                    salary: 0
+                }, {
                     name: "Петя",
-                    oneHourPrice: 50,
-                    hours: [5, 5, 5, 5, 5]
-                },
-                {
+                    hoursPerWeek: 25,
+                    salary: 1250
+                }, {
                     name: "Маша",
-                    oneHourPrice: 150,
-                    hours: [8, 8, 8, 9, 7]
-                }
-            ]), {
-            salaryArr: [{
-                name: "Вася",
-                hoursPerWeek: 0,
-                salary: 0
-            }, {
-                name: "Петя",
-                hoursPerWeek: 25,
-                salary: 1250
-            }, {
-                name: "Маша",
-                hoursPerWeek: 40,
-                salary: 6000
-            }],
-            sumForAllEmp: 7250,
-            hoursForAllEmp: 65,
-            isNormed: false,
-            isOverWorked: false,
-            lessThanNeed: ["Вася", "Петя"],
-            moreThanNeed: [],
-            names: ["Вася", "Петя", "Маша"]
-        })
+                    hoursPerWeek: 40,
+                    salary: 6000
+                }],
+                sumForAllEmp: 7250,
+                hoursForAllEmp: 65,
+                isNormed: false,
+                isOverWorked: false,
+                lessThanNeed: ["Вася", "Петя"],
+                moreThanNeed: [],
+                names: ["Вася", "Петя", "Маша"]
+            })
     })
 })
