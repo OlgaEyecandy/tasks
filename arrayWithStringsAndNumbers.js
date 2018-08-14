@@ -7,28 +7,22 @@
 Покрыть тестами
 */
 
-
-
 function superFunction(arr) {
     var sumNum = 0;
     var sumStr = '';
-    for (i = 0; i < arr.length; i++) {
-        if (typeof arr[i] === 'number') {
-            var num = Math.floor(arr[i]);
+    arr.forEach(function (item) {
+        if (typeof item === 'number') {
+            var num = Math.floor(item);
             sumNum += num;
         } 
-        else if (typeof arr[i] === 'string') {
-            sumStr += (lastUpper(arr[i]) + ' ');
-        } 
-        else {
-            console.log('hi i m mistake');
-        }
-    }
+        else if (typeof item === 'string') {
+            sumStr += (lastUpper(item) + ' ');
+        }  
+    });
     var superArr = [sumNum, sumStr];
     console.log(superArr);
     return superArr;
 }
-
 function lastUpper(str) {
     var index = str.length - 1;
     var strUpper = str.slice(0, index) + str[index].toUpperCase();
