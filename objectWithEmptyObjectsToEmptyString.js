@@ -22,10 +22,7 @@ function isObjectEmpty(n) {
     }
     return true;
 }
-
-function isObject(n) {
-    return typeof n === "object";
-}
+let isObject = n => typeof n === "object";
 
 var inputObject = {
     a: 1,
