@@ -3,14 +3,12 @@
 Реализовать функцию, которая принимает на вход объект и заменяет пустые вложенные объекты на пустые строки
 */
 
-function yourFunction(obj) {
-    console.log(obj, "yourFunction", ++counter);
+function replaceObjects(obj) {
     for (var name in obj) {
         if (isObject(obj[name])) {
             if (isObjectEmpty(obj[name])) {
                 obj[name] = "";
-            } 
-            else {
+            } else {
                 yourFunction(obj[name])
             }
         }
@@ -24,10 +22,7 @@ function isObjectEmpty(n) {
     }
     return true;
 }
-
-function isObject(n) {
-    return typeof n === "object";
-}
+let isObject = n => typeof n === "object";
 
 var inputObject = {
     a: 1,
@@ -54,6 +49,6 @@ var inputObject = {
         }
     }
 };
-var counter = 0;
-var outputObject = yourFunction(inputObject);
-console.log(JSON.stringify(outputObject));
+let outputObject = replaceObjects(inputObject);
+let result = JSON.stringify(outputObject);
+console.log(result);
