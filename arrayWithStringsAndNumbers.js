@@ -6,11 +6,11 @@
 второй элемент - строка из всех строк из переданного массива, последний символ каждой строки перевести в верхний регистр.
 Покрыть тестами
 */
-//changed smth
-function superFunction(arr) {
+
+var superFunction = arr => {
     var sumNum = 0;
     var sumStr = '';
-    arr.forEach(function (item) {
+    arr.forEach( item => {
         if (typeof item === 'number') {
             var num = Math.floor(item);
             sumNum += num;
@@ -23,7 +23,7 @@ function superFunction(arr) {
     console.log(superArr);
     return superArr;
 }
-function lastUpper(str) {
+var lastUpper = str => {
     var index = str.length - 1;
     var strUpper = str.slice(0, index) + str[index].toUpperCase();
     return strUpper;
