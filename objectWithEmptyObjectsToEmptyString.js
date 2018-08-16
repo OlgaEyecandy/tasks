@@ -9,7 +9,7 @@ function replaceObjects(obj) {
             if (isObjectEmpty(obj[name])) {
                 obj[name] = "";
             } else {
-                yourFunction(obj[name])
+                replaceObjects(obj[name])
             }
         }
     }
