@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+        </header>
+        <div class="field">
+            <div class="search-field">
+                <input type="text" name="" id="url">
+                <input type="button" value="Search" id="sendButton">
+            </div>
+            <div class="checkbox-field">
+                <input type="checkbox" name="" class="checkbox" id="checkbox">
+                <label for="checkbox"> Save the result</label>
+            </div>
+        </div>
+        <div class="field answer-field" id="messages">
+            <div class="field answer-field" id="msg"></div>
+        </div>
+
+        <footer>
+
+        </footer>
+    </div>
+    <script type="module">
+    import { SearchEngine} from './js/searchEngine.js';
+    import {Response} from './js/search.js';
+    let callback = (err, result) => (err, result);
+    let send = document.getElementById("sendButton");
+    window.onload = () => {
+        let url = "./data/links.json";
+        let checkBox = document.getElementById("checkbox");
+        let response = new Response();
+        let searchEngine = new SearchEngine(response);
+        send.onclick = () => {
+            let value = document.getElementById("url").value;
+            searchEngine.search(url, value, checkBox, callback);
+        }
+    }
+    </script>
+
+</body>
+
+</html>
