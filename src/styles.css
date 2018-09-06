@@ -1,0 +1,184 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  color: white;
+  background-color: #3a3434;
+}
+
+pre {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+pre {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  height: 100px;
+  position: sticky;
+  top: 0px;
+  background-image: linear-gradient(to right, #fb955a 0%, #ec3232 90%);
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  box-shadow: inset -1px -3px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+app-searchpage, app-answerfield{
+    width:100%;  
+  }
+.field {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+app-searchfield {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-field {
+  display: flex;
+  width: 50%;
+  padding: 20px 0px;
+}
+
+input[type="text"] {
+  font-family: 'Roboto Slab';
+  font-size: 1em;
+  padding: 5px;
+}
+
+input[type="text"] {
+  outline-color: #ec3232;
+}
+
+button {
+  font-family: 'Roboto Slab';
+  font-size: 1em;
+  color: white;
+  background-color: #ec3232;
+  border: 2px solid white;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+button:focus {
+  color: black;
+  background-color: white;
+  border: 2px solid #ec3232;
+  outline: none;
+}
+
+.checkbox-field {
+  display: flex;
+  height: 50px;
+  min-width: 100px;
+  align-items: center;
+}
+
+.checkbox+label {
+  position: relative;
+  cursor: pointer;
+}
+
+label:active {
+  color: #ec3232;
+  text-decoration: underline;
+}
+
+.answer-field {
+  display: flex;
+  min-height: 550px;
+  background-color: white;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+.message {
+  font-family: 'Raleway', serif;
+  font-size: 1em;
+  color: black;
+  margin: 10px;
+  padding: 20px 10px;
+  width: 90%;
+  border: 1px solid #3a3434;
+  border-radius: 10px;
+  word-wrap: break-word;
+  box-shadow: 1px 1px 14px 3px rgba(0, 0, 0, 0.2);
+  background-color: #79554836;
+}
+
+span {
+  color: #13837e;
+  font-size: 1.2em;
+}
+.span-url {
+  color: black;
+}
+
+footer {
+  display: flex;
+  height: 100px;
+  background-image: linear-gradient(to right, #fb955a 0%, #ec3232 90%);
+  width: 100%;
+  box-shadow: inset -1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media(max-width: 620px) {
+app-searchfield{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+  .search-field,
+  .checkbox-field {
+    width: 100%;
+  }
+
+  .message {
+    width: 90%;
+    font-size: 0.8em;
+    padding: 5px;
+  }
+
+  span {
+    font-size: 1em;
+  }
+.field{
+    width: 100%;
+}
+  .answer-field {
+    min-height: 200px;
+    width: 90%;
+  }
+  ul{
+      padding: 0px;
+      width: 100%;
+  }
+}

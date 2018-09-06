@@ -1,0 +1,7 @@
+<div class="search-field">
+  <input type="text" id="url" #searchValue>
+  <button value="Search" (click)="searchClick(searchValue.value);searchValue.value ='' ">Search</button></div>
+<div class="checkbox-field">
+  <input type="checkbox" id="cb"class="checkbox" (change)="ifCheckboxChecked()">
+  <label for="cb"> Save the result</label>
+</div>
