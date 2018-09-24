@@ -1,0 +1,21 @@
+<div class="row sign-message">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onCheckPassword(f)" #f="ngForm"> 
+       <div class="container"> <h2>Create new account</h2></div>
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text" id="username" name="username" class="form-control" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" ngModel>
+      </div>
+      <div class="form-group">
+        <div *ngIf="showExtra">Password doesn't match</div>
+        <label for="password">Confirm Password</label>
+        <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" ngModel>
+      </div>
+      <button class="btn btn-success" type="submit"> Sign up</button>
+    </form>
+  </div>
+</div>

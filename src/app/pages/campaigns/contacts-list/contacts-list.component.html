@@ -1,0 +1,54 @@
+<h4>Contacts</h4>
+<div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr class="table-header">
+        <th>Type</th>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>
+          <select class="form-control" name="type" #type>
+            <option value="email" label="email" selected="selected">email</option>
+            <option value="phone" label="phone">phone</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" class="form-control" name="name" #name>
+        </td>
+        <td>
+          <input type="text" class="form-control" name="value" #value>
+        </td>
+        <td>
+          <button class="btn" (click)="addContact(type.value, name.value, value.value)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngFor="let line of contactsList">
+        <td>
+          <select class="form-control"#newType>
+            <option value="email" label="email">email</option>
+            <option value="phone" label="phone">phone</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" value="{{line.name}}" class="form-control" #newName>
+        </td>
+        <td>
+          <input type="text" value="{{line.contact}}" class="form-control" #newValue>
+        </td>
+        <td>
+          <button class="btn btn-info" (click)="changeContact(newType.value, newName.value, newValue.value, line)">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+          <button class="btn btn-danger" (click)="onDeleteContact(line)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

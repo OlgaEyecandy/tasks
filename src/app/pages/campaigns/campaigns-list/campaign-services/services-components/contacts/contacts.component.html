@@ -1,0 +1,27 @@
+<h4>Contacts</h4>
+<div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr class="table-header">
+        <th class="table-min">
+          TO
+        </th>
+        <th class="table-min">
+          CC
+        </th>
+        <th>Name</th>
+      </tr>
+      <tr *ngFor="let contact of contactList">
+        <td class="table-min">
+          <input type="checkbox">
+        </td>
+        <td class="table-min">
+          <input type="checkbox">
+        </td>
+        <td>
+          {{contact.name }} <a href="mailto:{{contact.contact}}">({{contact.contact}})</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

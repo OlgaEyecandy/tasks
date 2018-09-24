@@ -1,0 +1,42 @@
+<div class="container container-padding">
+  <div class="title col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h3>{{username}} <button class="btn btn-link" (click)="button=!button">
+        Change
+      </button></h3>
+    <form *ngIf="button">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" ngModel name="name">
+      </div>
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" id="surname" class="form-control" ngModel name="name">
+      </div>
+      <label for="defaultEmail">Default email</label>
+      <input type="email" id="defaultEmail" class="form-control" ngModel name="defaultEmail">
+      <div class="modal-footer">
+        <button class="btn btn-default" type="submit">
+          Save
+        </button>
+        <button class="btn btn-default" (click)="button = false">
+          Close
+        </button>
+      </div>
+    </form>
+    <div *ngIf="!button">
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="table-header">
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Defailt email</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>

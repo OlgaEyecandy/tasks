@@ -1,0 +1,67 @@
+<h2>
+  Campaigns
+  <button class="btn btn-link" (click)="button=!button">
+    + Create new
+  </button>
+</h2>
+<div *ngIf="button">
+  <div>
+    <h3>New campaign</h3>
+  </div>
+  <form (ngSubmit)="createCampaign(campForm)" #campForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" ngModel name="name">
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" class="form-control" ngModel name="status">
+        <option label="IN_PROGRESS" selected="selected">IN_PROGRESS</option>
+      </select>
+    </div>
+    <div>
+      Services
+      <div class="form-checkbox">
+        <input type="checkbox" id="QUESTIONNAIRE" ngModel name="QUESTIONNAIRE" value="1">
+        <label for="QUESTIONNAIRE">QUESTIONNAIRE
+        </label>
+      </div>
+      <div class="form-checkbox">
+        <input type="checkbox" id="EMAIL_ALERTS" ngModel name="EMAIL_ALERTS" value="2">
+        <label for="EMAIL_ALERTS">EMAIL_ALERTS
+        </label>
+      </div>
+    </div>
+    <label for="limit">Limit</label>
+    <input id="limit" type="number" value="100" class="form-control" ngModel name="limit">
+    <div class="modal-footer">
+      <button class="btn btn-default" type="submit">
+        Save
+      </button>
+      <button class="btn btn-default" (click)="button = false">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="!ifCampaigns()">
+  <strong>No campaigns</strong>
+</div>
+<table class="table table-bordered" *ngIf="ifCampaigns()">
+  <tbody>
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Services</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let campaign of campaignsList">
+      <th>{{campaign.name}}</th>
+      <th><a [routerLink]="['/', getServiceNames(campaign.services)]">{{getServiceNames(campaign.services)}}</a></th>
+      <th>{{campaign.status}}</th>
+      <th><button class="btn btn-danger" (click)="onDeleteCampaign(campaign)">
+          <i class="fas fa-trash-alt"></i>
+        </button></th>
+    </tr>
+</table>

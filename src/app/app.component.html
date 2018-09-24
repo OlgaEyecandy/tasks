@@ -1,53 +1,7 @@
 <div class="d-flex">
-  <div class="d-flex siderbar-height" [@slideInOut]="animationState">
-    <div class="sidebar sidebar-dark bg-dark">
-      <ul class="list-unstyled">
-        <li *ngIf="isSignIn()">
-          <a routerLink="/user">
-            <i class="fa fa-user"></i>
-            <span class="menu-text">Profile</span>
-          </a>
-        </li>
-        <li *ngIf="isSignIn()">
-          <a routerLink="">
-            <i class="far fa-list-alt"></i>
-            <span class="menu-text">Campaigns</span>
-          </a>
-        </li>
-        <li *ngIf="isSignIn()">
-          <a routerLink="">
-            <i class="fa fa-envelope"></i>
-            <span class="menu-text">Messages</span>
-          </a>
-        </li>
-        <li *ngIf="isSignIn()">
-          <a routerLink="">
-            <i class="fa fa-bell"></i>
-            <span class="menu-text">Notifications</span>
-          </a>
-        </li>
-        <li *ngIf="isSignIn()">
-          <a routerLink="/signin" (click)="onLogout()">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="menu-text">Log Out</span>
-          </a>
-        </li>
-        <li *ngIf="!isSignIn()">
-          <a routerLink="/signin" href="#">
-            <i class="fas fa-sign-in-alt"></i>
-            <span class="menu-text">Sign in</span>
-          </a>
-        </li>
-        <li *ngIf="!isSignIn()">
-          <a routerLink="/signup" href="#">
-            <i class="fas fa-user-plus"></i>
-            <span class="menu-text">Sign up</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <div class="sidebar-height bg-dark">
+    <app-sidebar></app-sidebar>
   </div>
-  <a class="sidebar-toggle mr-3" (click)="toggleShowDiv('divA')"><i class="fa fa-bars"></i></a>
   <div class="container container-padding content">
     <router-outlet></router-outlet>
   </div>

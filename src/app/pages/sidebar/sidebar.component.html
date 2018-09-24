@@ -1,0 +1,141 @@
+<div class="d-flex">
+  <div class="sidebar" [@slideInOut]>
+    <a class="menuToggle" (click)="isMenuOpen = !isMenuOpen;">
+      <i class="fa fa-bars"></i>
+    </a>
+    <ul class="list-unstyled sidebar-i bg-dark">
+        
+      <li *ngIf="isSignIn()">
+        <a routerLink="/user">
+          <i class="fa fa-user"></i>
+        </a>
+      </li>
+      <li *ngIf="isSignIn()">
+        <a routerLink="">
+          <i class="far fa-list-alt"></i>
+
+        </a>
+      </li>
+      <li *ngIf="isSignIn()">
+        <a routerLink="">
+          <i class="fa fa-envelope"></i>
+
+        </a>
+      </li>
+      <li *ngIf="isSignIn()">
+        <a routerLink="">
+          <i class="fa fa-bell"></i>
+
+        </a>
+      </li>
+      <li *ngIf="isSignIn()">
+        <a routerLink="/signin" (click)="onLogout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+      <li *ngIf="!isSignIn()">
+        <a routerLink="/signin" href="#">
+          <i class="fas fa-sign-in-alt"></i>
+
+        </a>
+      </li>
+      <li *ngIf="!isSignIn()">
+        <a routerLink="/signup" href="#">
+          <i class="fas fa-user-plus"></i>
+
+        </a>
+      </li>
+    </ul>
+    <div class="bg-dark sidebar-span" [@changeWidth]="isMenuOpen">
+      <ul class="list-unstyled sidebar-list" *ngIf="isMenuOpen">
+        <li *ngIf="isSignIn()">
+          <a routerLink="/user">
+            <span class="menu-text">Profile</span>
+          </a>
+        </li>
+        <li *ngIf="isSignIn()">
+          <a routerLink="">
+
+            <span class="menu-text">Campaigns</span>
+          </a>
+        </li>
+        <li *ngIf="isSignIn()">
+          <a routerLink="">
+
+            <span class="menu-text">Messages</span>
+          </a>
+        </li>
+        <li *ngIf="isSignIn()">
+          <a routerLink="">
+
+            <span class="menu-text">Notifications</span>
+          </a>
+        </li>
+        <li *ngIf="isSignIn()">
+          <a routerLink="/signin" (click)="onLogout()">
+
+            <span class="menu-text">Log Out</span>
+          </a>
+        </li>
+        <li *ngIf="!isSignIn()">
+          <a routerLink="/signin" href="#">
+
+            <span class="menu-text">Sign in</span>
+          </a>
+        </li>
+        <li *ngIf="!isSignIn()">
+          <a routerLink="/signup" href="#">
+
+            <span class="menu-text">Sign up</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<!-- <div class="sidebar">
+        <ul class="list-unstyled sidebar-i bg-dark">
+          <a (click)="isMenuOpen = !isMenuOpen;">
+              <i class="fa fa-bars"></i>
+            </a>
+          <li *ngIf="isSignIn()">
+            <a routerLink="/user">
+              <i class="fa fa-user"></i>
+            </a>
+          </li>
+          <li *ngIf="isSignIn()">
+            <a routerLink="">
+              <i class="far fa-list-alt"></i>
+    
+            </a>
+          </li>
+          <li *ngIf="isSignIn()">
+            <a routerLink="">
+              <i class="fa fa-envelope"></i>
+    
+            </a>
+          </li>
+          <li *ngIf="isSignIn()">
+            <a routerLink="">
+              <i class="fa fa-bell"></i>
+    
+            </a>
+          </li>
+          <li *ngIf="isSignIn()">
+            <a routerLink="/signin" (click)="onLogout()">
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </li>
+          <li *ngIf="!isSignIn()">
+            <a routerLink="/signin" href="#">
+              <i class="fas fa-sign-in-alt"></i>
+    
+            </a>
+          </li>
+          <li *ngIf="!isSignIn()">
+            <a routerLink="/signup" href="#">
+              <i class="fas fa-user-plus"></i>
+    
+            </a>
+          </li> -->

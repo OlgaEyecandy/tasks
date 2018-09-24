@@ -1,0 +1,33 @@
+.sidebar {
+  display: flex;
+  margin-top: 20px;
+}
+
+.sidebar ul {
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+.sidebar a {
+  color: rgba(255, 255, 255, 0.836);
+}
+
+.sidebar a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.sidebar-i {
+  width: 40px;
+}
+
+.sidebar-list {
+  margin-top: 80px;
+  width: 120px;
+}
+.menuToggle{
+    display: block;
+    height: 40px;
+    position: absolute;
+    left: 15px;
+}
